@@ -38,26 +38,26 @@ class GenreList(views.APIView):
 
 class GenreDetail(views.APIView):
     def get(self, request, pk):
-        genre = Genre.objects.get(id=pk)
+        genre = generics.get_object_or_404(Genre, id=pk)
         serializer = GenreSerializer(genre)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
-        genre = Genre.objects.get(id=pk)
+        genre = generics.get_object_or_404(Genre, id=pk)
         serializer = GenreSerializer(genre, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def patch(self, request, pk):
-        genre = Genre.objects.get(id=pk)
+        genre = generics.get_object_or_404(Genre, id=pk)
         serializer = GenreSerializer(genre, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
-        genre = Genre.objects.get(id=pk)
+        genre = generics.get_object_or_404(Genre, id=pk)
         genre.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
