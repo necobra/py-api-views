@@ -45,16 +45,16 @@ class GenreDetail(views.APIView):
     def put(self, request, pk):
         genre = Genre.objects.get(id=pk)
         serializer = GenreSerializer(genre, data=request.data)
-        serializer.is_valid()
+        serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def patch(self, request, pk):
         genre = Genre.objects.get(id=pk)
         serializer = GenreSerializer(genre, data=request.data, partial=True)
-        serializer.is_valid()
+        serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
         genre = Genre.objects.get(id=pk)
