@@ -18,13 +18,18 @@ class MovieSerializer(serializers.Serializer):
         return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.title = validated_data.get("title",
-                                            instance.title)
-        instance.description = validated_data.get(
-            "description", instance.description
+        instance.title = validated_data.get(
+            "title",
+            instance.title
         )
-        instance.duration = validated_data.get("duration",
-                                               instance.duration)
+        instance.description = validated_data.get(
+            "description",
+            instance.description
+        )
+        instance.duration = validated_data.get(
+            "duration",
+            instance.duration
+        )
 
         instance.save()
 
@@ -40,10 +45,14 @@ class ActorSerializer(serializers.Serializer):
         return Actor.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.first_name = validated_data.get("first_name",
-                                                 instance.first_name)
-        instance.last_name = validated_data.get("last_name",
-                                                instance.last_name)
+        instance.first_name = validated_data.get(
+            "first_name",
+            instance.first_name
+        )
+        instance.last_name = validated_data.get(
+            "last_name",
+            instance.last_name
+        )
 
         instance.save()
 
@@ -60,12 +69,18 @@ class CinemaHallSerializer(serializers.Serializer):
         return CinemaHall.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get("name",
-                                           instance.name)
-        instance.rows = validated_data.get("rows",
-                                           instance.rows)
-        instance.seats_in_row = validated_data.get("seats_in_row",
-                                                   instance.seats_in_row)
+        instance.name = validated_data.get(
+            "name",
+            instance.name
+        )
+        instance.rows = validated_data.get(
+            "rows",
+            instance.rows
+        )
+        instance.seats_in_row = validated_data.get(
+            "seats_in_row",
+            instance.seats_in_row
+        )
 
         instance.save()
 
@@ -80,8 +95,10 @@ class GenreSerializer(serializers.Serializer):
         return Genre.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get("name",
-                                           instance.name)
+        instance.name = validated_data.get(
+            "name",
+            instance.name
+        )
 
         instance.save()
 
